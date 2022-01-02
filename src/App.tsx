@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 
 const App: React.FC = () => {
   return (
-    <Box>
+    <Box sx={{ minHeight: "300vh" }}>
       <Home />
     </Box>
   );
