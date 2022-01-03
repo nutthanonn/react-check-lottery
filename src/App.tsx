@@ -1,4 +1,6 @@
 import React from "react";
+import "./styles.css";
+
 import Home from "./page/home";
 import Nav from "./components/header/nav";
 
@@ -9,9 +11,6 @@ const App: React.FC = () => {
     <Box>
       <Nav />
       <Home />
-      <Box
-        sx={{ minHeight: "300vh", position: "relative", bgcolor: "#CCF2F4" }}
-      ></Box>
     </Box>
   );
 };

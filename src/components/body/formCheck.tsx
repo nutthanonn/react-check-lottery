@@ -1,14 +1,14 @@
 import React from "react";
+import FormCheckItem from "./item/formCheckItem";
 
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import InputBase from "@mui/material/InputBase";
+import Button from "@mui/material/Button";
 
 import { LotteryStoreImpl } from "../../store/lotteryStore";
 import { observer } from "mobx-react";
 import { makeStyles } from "@mui/styles";
-import { MdMoney } from "react-icons/md";
+import { LotteryStore } from "../../store/lotteryStore";
 
 interface FormCheckProps {
   store: LotteryStoreImpl;
@@ -16,9 +16,6 @@ interface FormCheckProps {
 
 const useStyles = makeStyles({
   root: {
-    display: "flex",
-    justifyContent: "center",
-    alignItem: "center",
     marginTop: 50,
   },
   formNumber: {
@@ -38,37 +35,32 @@ const useStyles = makeStyles({
   },
 });
 
-const item = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const item = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 const FormCheck: React.FC<FormCheckProps> = observer(({ store }) => {
   const classes = useStyles();
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {};
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <Box className={classes.root}>
       <Grid container spacing={2}>
         {item.map((item) => {
-          return (
-            <Grid item md={4} key={item} className={classes.gridChild}>
-              <Paper
-                elevation={1}
-                component="form"
-                className={classes.formNumber}
-              >
-                <Box className={classes.IconCenter}>
-                  <MdMoney size="20" color="green" />
-                </Box>
-                <InputBase
-                  type="text"
-                  sx={{ ml: 1 }}
-                  placeholder="เลขล๊อตเตอรี่"
-                />
-              </Paper>
-            </Grid>
-          );
+          return <FormCheckItem key={item} id={item} store={LotteryStore} />;
         })}
       </Grid>
+      <Box>
+        <Button
+          type="submit"
+          variant="text"
+          sx={{ width: 200 }}
+          onClick={handleClick}
+        >
+          Check
+        </Button>
+      </Box>
     </Box>
   );
 });

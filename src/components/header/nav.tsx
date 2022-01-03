@@ -23,7 +23,8 @@ const useStyles = makeStyles({
   },
   navScroll: {
     backgroundColor: "#F4F9F9",
-    height: "10vh",
+    transition: "all 1s ease",
+    height: "8vh",
   },
 });
 
