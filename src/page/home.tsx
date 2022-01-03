@@ -10,11 +10,16 @@ import { LotteryStore } from "../store/lotteryStore";
 
 const useStyles = makeStyles({
   root: {
+    display: "block",
+    minHeight: "100vh",
+    backgroundColor: "#F4F9F9",
+  },
+  boxContainer: {
     display: "flex",
+    position: "fixed",
     justifyContent: "center",
   },
   container: {
-    width: "90vw",
     marginTop: 50,
   },
 });
@@ -22,10 +27,9 @@ const useStyles = makeStyles({
 const Home: React.FC = () => {
   const classes = useStyles();
   return (
-    <Box>
-      <Nav />
-      <Box className={classes.root}>
-        <Box className={classes.container} sx={{ border: 1 }}>
+    <Box className={classes.root}>
+      <Box className={classes.boxContainer}>
+        <Box className={classes.container}>
           <SelectDate store={LotteryStore} />
           <FormCheck store={LotteryStore} />
         </Box>
