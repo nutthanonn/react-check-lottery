@@ -1,3 +1,5 @@
+//refacter code
+
 import React, { useState, useEffect } from "react";
 
 import Box from "@mui/material/Box";
@@ -14,7 +16,28 @@ interface PrizeNumberProps {
 
 const useStyles = makeStyles({
   root: {
-    height: "30vh",
+    height: "40vh",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    "@media only screen and (max-width: 1000px)": {
+      flexDirection: "column",
+    },
+  },
+  boxPrize: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  title: {
+    fontWeight: "lighter",
+  },
+  boxAll: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
@@ -29,23 +52,48 @@ const PrizeNumber: React.FC<PrizeNumberProps> = observer(({ store }) => {
     }
 
     fetch();
-  }, [store, store.DataDateTime]);
+  }, [store, store.DataSelect]);
 
   return (
     <Box className={classes.root}>
-      <Box id="รางวัลที่-1">
-        <Typography variant="h3"></Typography>
+      <Box id="รางวัลที่-1" className={classes.boxAll}>
+        <Typography variant="h3" className={classes.title}>
+          {prizeNumber?.prizeFirst[0]}
+        </Typography>
+        <Typography variant="body2">รางวัลที่ 1</Typography>
       </Box>
-      <Box id="3-ตัวหน้า">
-        <Typography variant="h4"></Typography>
-        <Typography variant="h4"></Typography>
+      <Box className={classes.boxAll}>
+        <Box id="3-ตัวหน้า" className={classes.boxPrize} sx={{ width: 200 }}>
+          {prizeNumber?.runningNumberFrontThree.map((item) => {
+            return (
+              <Typography variant="h4" className={classes.title} key={item}>
+                {item}
+              </Typography>
+            );
+          })}
+        </Box>
+        <Typography variant="body2">รางวัลสามตัวหน้า</Typography>
       </Box>
-      <Box id="3-ตัวหลัง">
-        <Typography variant="h4"></Typography>
-        <Typography variant="h4"></Typography>
+      <Box className={classes.boxAll}>
+        <Box id="3-ตัวหน้า" className={classes.boxPrize} sx={{ width: 200 }}>
+          {prizeNumber?.runningNumberBackThree.map((item) => {
+            return (
+              <Typography variant="h4" className={classes.title} key={item}>
+                {item}
+              </Typography>
+            );
+          })}
+        </Box>
+        <Typography variant="body2">รางวัลสามตัวหลัง</Typography>
       </Box>
-      <Box id="2 ตัว">
-        <Typography variant="h5"></Typography>
+
+      <Box className={classes.boxAll}>
+        <Box id="2 ตัว" className={classes.boxPrize}>
+          <Typography variant="h5">
+            {prizeNumber?.runningNumberBackTwo[0]}
+          </Typography>
+        </Box>
+        <Typography variant="body2">รางวัลสองตัวท้าย</Typography>
       </Box>
     </Box>
   );

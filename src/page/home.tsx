@@ -5,12 +5,16 @@ import FormCheck from "../components/body/formCheck";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 
 import { LotteryStore } from "../store/lotteryStore";
 
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    height: "100vh",
+    width: "100vw",
+  },
   blockItem: {
     display: "block",
     minHeight: "100vh",
@@ -20,9 +24,16 @@ const useStyles = makeStyles({
     display: "flex",
     position: "fixed",
     justifyContent: "center",
+    "@media only screen and (max-width: 800px)": {
+      position: "relative",
+    },
   },
   container: {
     margin: 50,
+  },
+  gridChildCenter: {
+    display: "flex",
+    justifyContent: "space-around",
   },
 });
 
@@ -33,11 +44,21 @@ const Home: React.FC = () => {
       <Box className={classes.blockItem}>
         <Box className={classes.boxContainer}>
           <Box className={classes.container}>
-            <Grid container sx={{ border: 1 }}>
-              <Grid item md={8}>
+            <Grid
+              container
+              sx={{
+                bgcolor: "#A4EBF3",
+                p: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Grid item md={9} xs={12} sm={12}>
+                <Typography variant="h3">รางวัลที่ออก</Typography>
                 <PrizeNumber store={LotteryStore} />
               </Grid>
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <SelectDate store={LotteryStore} />
               </Grid>
             </Grid>

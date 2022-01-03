@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-const item = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const item = [0, 1, 2, 3, 4, 5];
 
 const FormCheck: React.FC<FormCheckProps> = observer(({ store }) => {
   const classes = useStyles();

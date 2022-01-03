@@ -50,6 +50,7 @@ const SelectDate: React.FC<SelectDateProps> = observer(({ store }) => {
           value={value}
           onChange={handleChange}
           className={classes.selectForm}
+          size="small"
         >
           {data.map((item) => {
             return (
