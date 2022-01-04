@@ -22,16 +22,18 @@ const useStyles = makeStyles({
 
 const PrizeBoard: React.FC<PrizeBoardProps> = observer(({ store }) => {
   const classes = useStyles();
-  const [prize, setPrize] = useState<prizeProps[]>([]);
+  const [prize, setPrize] = useState<(prizeProps[] | undefined)[]>([]);
 
   useEffect(() => {
     async function fetch() {
-      const res = await store.fetch_data_prize();
-      // setPrize(res);
+      if (store.LotteryDate) {
+        const res = await store.fetch_data_prize();
+        setPrize(res);
+      }
     }
 
     fetch();
-  }, [store, store.LotteryDate]);
+  }, [store, store.LotteryDate, store.LotteryHalfMonthData]);
 
   return (
     <Box className={classes.root}>
