@@ -29,7 +29,7 @@ const Home: React.FC = () => {
       <Nav />
       <Box className={classes.block}>
         <Box className={classes.fixedPage}>
-          <PrizeBoard />
+          <PrizeBoard store={LotteryStore} />
           <SelectDate store={LotteryStore} />
         </Box>
       </Box>

@@ -1,9 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import { makeStyles } from "@mui/styles";
+import { observer } from "mobx-react";
+import { LotteryStoreImpl } from "../../store/lotteryStore";
+import { prizeProps } from "../../interfaces/lotteryPrize";
+
+interface PrizeBoardProps {
+  store: LotteryStoreImpl;
+}
 
 const useStyles = makeStyles({
   root: {},
@@ -13,8 +20,19 @@ const useStyles = makeStyles({
   },
 });
 
-const PrizeBoard: React.FC = () => {
+const PrizeBoard: React.FC<PrizeBoardProps> = observer(({ store }) => {
   const classes = useStyles();
+  const [prize, setPrize] = useState<prizeProps[]>([]);
+
+  useEffect(() => {
+    async function fetch() {
+      const res = await store.fetch_data_prize();
+      // setPrize(res);
+    }
+
+    fetch();
+  }, [store, store.LotteryDate]);
+
   return (
     <Box className={classes.root}>
       <Box className={classes.box}>
@@ -22,6 +40,6 @@ const PrizeBoard: React.FC = () => {
       </Box>
     </Box>
   );
-};
+});
 
 export default PrizeBoard;
