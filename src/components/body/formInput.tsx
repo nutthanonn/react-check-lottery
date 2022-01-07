@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
   formCheck: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     margin: 10,
     width: 300,
   },
