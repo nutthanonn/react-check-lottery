@@ -18,6 +18,10 @@ const useStyles = makeStyles({
     alignItems: "center",
     flexDirection: "column",
   },
+  boxNumber: {
+    display: "flex",
+    flexDirection: "row",
+  },
 });
 
 const PrizeBoardItem: React.FC<PrizeBoardItemProps> = ({
@@ -28,7 +32,15 @@ const PrizeBoardItem: React.FC<PrizeBoardItemProps> = ({
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Typography variant="h5">{number}</Typography>
+      <Box className={classes.boxNumber}>
+        {number.map((item) => {
+          return (
+            <Typography variant="h5" sx={{ m: 1 }}>
+              {item}
+            </Typography>
+          );
+        })}
+      </Box>
       <Typography variant="body2">{name}</Typography>
     </Box>
   );

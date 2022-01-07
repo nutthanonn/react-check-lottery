@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PrizeBoardItem from "./item/prizeBoardItem";
+import PrizeBoardSkeleton from "./skeleton/prizeBoardSkeleton";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     flexDirection: "row",
     margin: 20,
-    "@media only screen and (max-width: 600px)": {
+    "@media only screen and (max-width: 790px)": {
       flexDirection: "column",
     },
   },
@@ -60,8 +61,8 @@ const PrizeBoard: React.FC<PrizeBoardProps> = observer(({ store }) => {
         </Box>
       )}
       {!prize && (
-        <Box>
-          <Typography>Error</Typography>
+        <Box className={classes.box}>
+          <PrizeBoardSkeleton />
         </Box>
       )}
     </Box>

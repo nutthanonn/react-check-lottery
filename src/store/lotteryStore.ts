@@ -61,19 +61,28 @@ export class LotteryStoreImpl {
       this.LotteryPrizeData.runningNumbers?.forEach((item, index) => {
         if (index === 0) {
           item.number.forEach((numberInList) => {
-            if (numberInList === numberClient.slice(0, 3)) {
+            if (
+              numberInList === numberClient.slice(0, 3) ||
+              bigPrize.length === 0
+            ) {
               bigPrize.push(item);
             }
           });
         } else if (index === 1) {
           item.number.forEach((numberInList) => {
-            if (numberInList === numberClient.slice(3, 6)) {
+            if (
+              numberInList === numberClient.slice(3, 6) ||
+              bigPrize.length === 0
+            ) {
               bigPrize.push(item);
             }
           });
         } else {
           item.number.forEach((numberInList) => {
-            if (numberInList === numberClient.slice(4, 6)) {
+            if (
+              numberInList === numberClient.slice(4, 6) ||
+              bigPrize.length === 0
+            ) {
               bigPrize.push(item);
             }
           });

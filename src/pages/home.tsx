@@ -1,10 +1,11 @@
 import React from "react";
 import FormInput from "../components/body/formInput";
+import Footer from "../components/footer/footer";
+import PrizeBoard from "../components/body/prizeBoard";
+import SelectDate from "../components/body/selectDate";
 
 import Box from "@mui/material/Box";
 import Nav from "../components/header/nav";
-import PrizeBoard from "../components/body/prizeBoard";
-import SelectDate from "../components/body/selectDate";
 
 import { makeStyles } from "@mui/styles";
 
@@ -63,6 +64,7 @@ const Home: React.FC = () => {
       <Box className={classes.relativeBox}>
         <FormInput store={LotteryStore} />
       </Box>
+      <Footer />
     </Box>
   );
 };
