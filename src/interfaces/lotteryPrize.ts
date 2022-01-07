@@ -3,7 +3,7 @@ export interface prizeProps {
   name: string;
   reward: string;
   amount: number;
-  number: number[];
+  number: string[];
 }
 
 export interface lotteryPrizeData {

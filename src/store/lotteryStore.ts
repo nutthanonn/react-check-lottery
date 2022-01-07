@@ -16,7 +16,7 @@ export class LotteryStoreImpl {
   @observable LotteryDate: string = "";
   @observable PrizeNumber: prizeProps[] = [];
 
-  @observable ClientNumber: string[] = [];
+  @observable ThaiDate: string | undefined = "";
 
   constructor() {
     makeObservable(this);
@@ -28,7 +28,7 @@ export class LotteryStoreImpl {
     const res = await DataPrize(this.LotteryDate);
     this.LotteryPrizeData = res[0];
     this.PrizeNumber = res[1];
-    console.log("Work");
+    this.ThaiDate = this.LotteryPrizeData.date;
   }
 
   @action
@@ -44,6 +44,44 @@ export class LotteryStoreImpl {
     //do when client change date lottery
     this.LotteryDate = id;
     this.fetch_data_prize();
+  }
+
+  @action
+  check_lottery_number(numberClient: string) {
+    var bigPrize: prizeProps[] = [];
+    this.LotteryPrizeData.prizes?.forEach((item) => {
+      item.number.forEach((number) => {
+        if (number === numberClient) {
+          bigPrize.push(item);
+        }
+      });
+    });
+
+    if (!bigPrize.length) {
+      this.LotteryPrizeData.runningNumbers?.forEach((item, index) => {
+        if (index === 0) {
+          item.number.forEach((numberInList) => {
+            if (numberInList === numberClient.slice(0, 3)) {
+              bigPrize.push(item);
+            }
+          });
+        } else if (index === 1) {
+          item.number.forEach((numberInList) => {
+            if (numberInList === numberClient.slice(3, 6)) {
+              bigPrize.push(item);
+            }
+          });
+        } else {
+          item.number.forEach((numberInList) => {
+            if (numberInList === numberClient.slice(4, 6)) {
+              bigPrize.push(item);
+            }
+          });
+        }
+      });
+    }
+
+    return bigPrize;
   }
 }
 
