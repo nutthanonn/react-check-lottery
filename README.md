@@ -1,7 +1,5 @@
 # เว็ปไซต์ตรวจล๊อตเตอรี่
 
-## สามารถตรวจได้ตั้งแต่งวด 1 มีนาคม - ปัจจุบัน
-
 `ขอบคุณ API ดีๆจาก `[Github rayriffy](https://github.com/rayriffy/thai-lotto-api)
 
 <!--
