@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PrizeItem from "./item/prizesItem";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -22,24 +23,15 @@ const useStyles = makeStyles({
 
 const PrizeBoard: React.FC<PrizeBoardProps> = observer(({ store }) => {
   const classes = useStyles();
-  const [prize, setPrize] = useState<(prizeProps[] | undefined)[]>([]);
+  const [prize, setPrize] = useState<prizeProps[] | null>(null);
 
   useEffect(() => {
-    async function fetch() {
-      if (store.LotteryDate) {
-        const res = await store.fetch_data_prize();
-        setPrize(res);
-      }
-    }
-
-    fetch();
-  }, [store, store.LotteryDate, store.LotteryHalfMonthData]);
+    setPrize(store.PrizeNumber);
+  }, [store, store.LotteryDate]);
 
   return (
     <Box className={classes.root}>
-      <Box className={classes.box}>
-        <Typography>NUTHTANON</Typography>
-      </Box>
+      <Box className={classes.box}>{prize && <Box></Box>}</Box>
     </Box>
   );
 });

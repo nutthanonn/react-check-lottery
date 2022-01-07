@@ -29,7 +29,6 @@ const SelectDate: React.FC<SelectDateProps> = observer(({ store }) => {
       const res = await store.fetch_data_per_half_month();
       setDate(res);
       setValue(res[0].id); // งวดล่าสุด
-      store.change_lottery_date(res[0].id); // เปลี่ยนค่าใน store เป็นค่างวดล่าสุดเพื่อให้ state อื่น action ได้
     }
 
     fetch();
