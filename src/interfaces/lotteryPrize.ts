@@ -5,7 +5,6 @@ export interface prizeProps {
   amount: number;
   number: string[];
 }
-
 export interface lotteryPrizeData {
   date?: string;
   endpoint?: string;
