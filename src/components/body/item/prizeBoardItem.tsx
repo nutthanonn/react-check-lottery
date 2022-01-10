@@ -33,9 +33,9 @@ const PrizeBoardItem: React.FC<PrizeBoardItemProps> = ({
   return (
     <Box className={classes.root}>
       <Box className={classes.boxNumber}>
-        {number.map((item) => {
+        {number.map((item, index) => {
           return (
-            <Typography variant="h5" sx={{ m: 1 }}>
+            <Typography variant="h5" sx={{ m: 1 }} key={index}>
               {item}
             </Typography>
           );

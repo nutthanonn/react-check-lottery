@@ -49,6 +49,7 @@ export class LotteryStoreImpl {
   @action
   check_lottery_number(numberClient: string) {
     var bigPrize: prizeProps[] = [];
+
     this.LotteryPrizeData.prizes?.forEach((item) => {
       item.number.forEach((number) => {
         if (number === numberClient) {
@@ -62,7 +63,7 @@ export class LotteryStoreImpl {
         if (index === 0) {
           item.number.forEach((numberInList) => {
             if (
-              numberInList === numberClient.slice(0, 3) ||
+              numberInList === numberClient.slice(0, 3) &&
               bigPrize.length === 0
             ) {
               bigPrize.push(item);
@@ -71,7 +72,7 @@ export class LotteryStoreImpl {
         } else if (index === 1) {
           item.number.forEach((numberInList) => {
             if (
-              numberInList === numberClient.slice(3, 6) ||
+              numberInList === numberClient.slice(3, 6) &&
               bigPrize.length === 0
             ) {
               bigPrize.push(item);
@@ -80,7 +81,7 @@ export class LotteryStoreImpl {
         } else {
           item.number.forEach((numberInList) => {
             if (
-              numberInList === numberClient.slice(4, 6) ||
+              numberInList === numberClient.slice(4, 6) &&
               bigPrize.length === 0
             ) {
               bigPrize.push(item);

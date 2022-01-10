@@ -90,6 +90,8 @@ const FormInput: React.FC<FormInputProps> = observer(({ store }) => {
     } else {
       const res = store.check_lottery_number(value);
       if (res.length > 0) {
+        console.log(res);
+
         toastifyFunc(
           `ยินดีด้วยค่ะคุณถูก${res[0].name} เงินรางวัล ${res[0].reward.replace(
             /\B(?=(\d{3})+(?!\d))/g,

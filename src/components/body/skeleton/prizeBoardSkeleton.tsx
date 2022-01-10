@@ -30,9 +30,9 @@ const PrizeBoardSkeleton: React.FC = () => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      {item.map(() => {
+      {item.map((item) => {
         return (
-          <Box className={classes.boxNumber}>
+          <Box className={classes.boxNumber} key={item}>
             <Skeleton variant="text" width={100} />
             <Skeleton variant="text" width={120} />
           </Box>
